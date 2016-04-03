@@ -1,13 +1,14 @@
 /*
 
-RESETS
+TEASER PAGE
 
 */
-body, html {
+html, body {
     margin: 0;
     padding: 0;
     display: block;
     position: absolute;
+    font-family: sans-serif;
     top: 0;
     left: 0;
     width: 100%;
@@ -18,7 +19,6 @@ body, html {
     background: radial-gradient(ellipse at center,  rgba(254,255,255,1) 0%,rgba(210,235,249,1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#feffff', endColorstr='#d2ebf9',GradientType=1 );
 }
-
 .logo {
     display: block;
     position: absolute;
@@ -33,4 +33,282 @@ body, html {
 }
 .logo:hover {
     opacity: 0.65;
+}
+.container {
+    display: block;
+    position: relative;
+    width: 960px;
+    margin: 0 auto;
+}
+html,
+body.home {
+    background: #FAFAFA;
+}
+
+/*
+
+HEADER FONTS
+
+*/
+a.button,
+h1, h2 {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: normal;
+    font-size: 27px;
+}
+h2 {
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
+/*
+
+SECTIONS
+
+*/
+.section {
+    text-align: center;
+}
+.section h2 {
+    margin: 60px 0 20px;
+}
+
+/*
+
+BUTTONS
+
+*/
+a.button {
+    font-size: 22px;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-block;
+    position: relative;
+    padding: 10px 20px;
+    border: 2px solid #AAA;
+    border-radius: 3px;
+    background: #EEE;
+    color: #757575;
+    margin: 10px 5px;
+}
+a.button:hover {
+    background: #CCC;
+    color: #222;
+}
+a.button.primary {
+    color: #EEE;
+    border-color: #000;
+    background: rgb(136,136,136); /* Old browsers */
+    background: -moz-linear-gradient(top,  rgba(136,136,136,1) 0%, rgba(34,34,34,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,  rgba(136,136,136,1) 0%,rgba(34,34,34,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,  rgba(136,136,136,1) 0%,rgba(34,34,34,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#888888', endColorstr='#222222',GradientType=0 ); /* IE6-9 */
+}
+a.button.primary:hover {
+    background: #333;
+}
+a.button.secondary {
+    color: #222;
+    background: rgb(241,241,241); /* Old browsers */
+    background: -moz-linear-gradient(top,  rgba(241,241,241,1) 0%, rgba(224,224,224,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,  rgba(241,241,241,1) 0%,rgba(224,224,224,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,  rgba(241,241,241,1) 0%,rgba(224,224,224,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1f1f1', endColorstr='#e0e0e0',GradientType=0 );
+}
+a.button.secondary:hover {
+    background: #DDD;
+}
+
+/*
+
+HEADER
+
+*/
+#header {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background: #DFE3E6;
+    border-bottom: 2px solid #AAA;
+    z-index: 999;
+    text-align: right;
+    padding: 20px 0;
+}
+#header a {
+    display: inline-block;
+    position: relative;
+    font-family: 'Rajdhani', sans-serif;
+    text-decoration: none;
+    font-size: 22px;
+    color: #222;
+    padding: 10px 20px;
+    margin: 0 -20px 0 20px;
+}
+#header a.active {
+    background: #F1F3F4;
+}
+#header a.active:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background: #222;
+}
+#header a:hover {
+    color: #069;
+}
+#header a.active:hover {
+    color: #000;
+}
+#header a#company-name {
+    float: left;
+    width: 50px;
+    height: 50px;
+    background: url(../img/logo.png) no-repeat;
+    text-indent: 999em;
+    margin: -5px 0 0 0;
+}
+
+/*
+
+YOU
+
+Blue - #D7EAF5
+Grey - #EEEEEE
+
+*/
+#you {
+    padding: 150px 0;
+    display: block;
+    position: relative;
+    border-bottom: 2px solid #AAA;
+    background: rgb(215,234,245); /* Old browsers */
+    background: -moz-linear-gradient(top,  rgba(215,234,245,1) 0%, rgba(238,238,238,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,  rgba(215,234,245,1) 0%,rgba(238,238,238,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,  rgba(215,234,245,1) 0%,rgba(238,238,238,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d7eaf5', endColorstr='#eeeeee',GradientType=0 );
+}
+#you:after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 280px;
+    height: 405px;
+    background: url(../img/robot.png) no-repeat;
+    bottom: -95px;
+    left: 50%;
+    margin: 0 0 0 -140px;
+}
+#you a.button {
+    margin-bottom: 250px;
+}
+
+/*
+
+WE
+
+*/
+#we {
+    padding: 150px 0;
+    display: block;
+    position: relative;
+    border-bottom: 2px solid #AAA;
+}
+#partners a {
+    display: inline-block;
+    position: relative;
+    text-indent: -999em;
+    vertical-align: middle;
+    margin: 20px 20px 30px;
+}
+a#mongodb {
+    width: 257px;
+    height: 75px;
+    background: url(../img/mongodb.png) no-repeat;
+}
+a#mdec {
+    width: 256px;
+    height: 84px;
+    background: url(../img/mdec.png) no-repeat;
+}
+a#neuroware {
+    width: 281px;
+    height: 47px;
+    background: url(../img/neuroware.png) no-repeat;
+}
+#partners a:hover {
+    opacity: 0.65;
+}
+
+/*
+
+US
+
+*/
+#us {
+    padding: 150px 0;
+    display: block;
+    position: relative;
+    border-bottom: 2px solid #AAA;
+    background: #DFEBF2;
+}
+#team a {
+    display: inline-block;
+    position: relative;
+    text-indent: -999em;
+    vertical-align: top;
+    margin: 20px 0px -20px;
+    width: 302px;
+    height: 302px;
+}
+a#mark {
+    background: url(../img/mark.png) no-repeat;
+}
+a#ruben {
+    background: url(../img/ruben.png) no-repeat;
+}
+a#johnny {
+    background: url(../img/johnny.png) no-repeat;
+}
+#team a:hover {
+    opacity: 0.65;
+}
+
+/*
+
+FOOTER
+
+*/
+h3#copyright {
+    display: block;
+    position: relative;
+    background: #DFE3E6;
+    text-align: center;
+    font-size: 11px;
+    margin: 0;
+    padding: 0;
+    line-height: 30px;
+    font-weight: normal;
+    color: #888;
+}
+
+/*
+
+RESPONSIVENESS
+
+*/
+@media (max-width: 980px) {
+    .container {
+        display: block;
+        position: relative;
+        width: 90%;
+        padding: 0 5%;
+        margin: 0;
+    }
 }

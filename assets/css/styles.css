@@ -242,6 +242,11 @@ a#mdec {
     height: 84px;
     background: url(../img/mdec.png) no-repeat;
 }
+a#betanomics {
+    width: 240px;
+    height: 110px;
+    background: url(../img/betanomics.png) no-repeat;
+}
 a#neuroware {
     width: 281px;
     height: 75px;

@@ -232,6 +232,11 @@ a#mongodb {
     height: 75px;
     background: url(../img/mongodb.png) no-repeat;
 }
+a#cimb {
+    width: 275px;
+    height: 75px;
+    background: url(../img/cimb.png) no-repeat;
+}
 a#mdec {
     width: 256px;
     height: 84px;
@@ -239,7 +244,7 @@ a#mdec {
 }
 a#neuroware {
     width: 281px;
-    height: 47px;
+    height: 75px;
     background: url(../img/neuroware.png) no-repeat;
 }
 #partners a:hover {

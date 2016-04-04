@@ -226,6 +226,7 @@ WE
     text-indent: -999em;
     vertical-align: middle;
     margin: 20px 20px 30px;
+    outline: 0;
 }
 a#mongodb {
     width: 257px;
@@ -276,6 +277,7 @@ US
     margin: 20px 0px -20px;
     width: 302px;
     height: 302px;
+    outline: 0;
 }
 a#mark {
     background: url(../img/mark.png) no-repeat;

@@ -243,6 +243,11 @@ a#mdec {
     height: 84px;
     background: url(../img/mdec.png) no-repeat;
 }
+a#msc {
+    width: 240px;
+    height: 110px;
+    background: url(../img/MSC.png) no-repeat;
+}
 a#betanomics {
     width: 240px;
     height: 110px;

@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MongoKong RPG-JS Demo</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+	<!-- Import jQuery (optional) -->
+	<script src="http://code.jquery.com/jquery-1.6.min.js"></script>
+
+	<!-- Import Rpg.js Beta -->
+
+	<script src="rpg.js"></script>
+
+
+	<!-- Import generated animations -->
+	<!---->
+	<script src="Database/Animation.js"></script>
+	<script src="Database/Langs.js"></script>
+
+	<link rel="stylesheet" href="style.css" type="text/css">
+
+
+	<script>
+
+		var rpg;
+		function resize_canvas(load_rpg, reload_rpg){
+			if(!reload_rpg) reload_rpg = false;
+			if(reload_rpg){
+				rpg.save(1);
+				rpg = null;
+			}
+			var window_height = $(window).height();
+			var window_width = $(window).width();
+			$('#canvas_rpg').each(function(){
+				this_width = parseInt($(this).attr('data-width'));
+				this_height = parseInt($(this).attr('data-height'));
+				wrapper_width = $(this).parent().width();
+				aspect_ratio = this_height / this_width;
+				extra_width = wrapper_width-this_width;
+				extra_height = extra_width * aspect_ratio;
+				new_height = this_height+extra_height;
+				$(this).attr('data-width',window_width);
+				$(this).attr('data-height',new_height);
+				//$(this).css({height:new_height});
+				//$('#canvas_rpg-dom').css({height:new_height,width:window_width});
+				if(new_height >= window_height){
+					additional_height = new_height - window_height;
+					//$(this).css({height:new_height-additional_height});
+					less_width = additional_height / aspect_ratio;
+					//$(this).css({width:window_width-less_width});
+					$(this).attr('data-width',window_width-less_width);
+					$(this).attr('data-height',new_height-additional_height);
+					final_width = window_width-less_width;
+					//$(this).css({marginLeft:0-(final_width / 2)});
+					$(this).css({left:'50%',marginLeft:0-(final_width / 2)});
+					//$('#canvas_rpg-dom').css({height:new_height-additional_height,width:window_width-less_width,left:'50%',marginLeft:0-(final_width / 2)});
+				}
+			});
+			dimensions = [];
+			dimensions.height = new_height-additional_height;
+			dimensions.width = window_width-less_width;
+			if(!load_rpg) load_rpg = false;
+			if(load_rpg) {
+				loadRpg();
+				rpg.load(1);
+			}
+			return dimensions
+		}
+		function load_wrapper() {
+			//resize_canvas(true);
+			loadRpg();
+		}
+		function loadRpg() {
+
+			dimensions = resize_canvas();
+
+			rpg = new Rpg("canvas_rpg");
+			var href = window.location.href;
+
+			/*
+			if (window.parent.frames.length > 0) {
+				var iframe = window.parent.frames[0].document;
+				if (!iframe.width) {
+					iframe = $(iframe);
+					iframe.width = iframe.width();
+					iframe.height = iframe.height();
+
+				}
+
+				if (/fullscreen/.test(href)) {
+					rpg.setCanvasSize("fullscreen");
+				}
+				else {
+					rpg.setCanvasSize(iframe.width, iframe.height);
+				}
+			}
+			*/
+
+			rpg.setCanvasSize(dimensions.width, dimensions.height);
+
+			if (/lang=fr/.test(href)) {
+				rpg.setLang("fr");
+			}
+			else {
+				rpg.setLang("en");
+			}
+
+			var cookie = getCookie();
+			if (/mute/.test(href) || cookie['rpg-volume'] == 0) {
+				$('#sound').trigger("click");
+			}
+
+			// Adding Animation
+			rpg.setGraphicAnimation(192, 192);
+			rpg.addAnimation({
+				name: 'coin',
+				graphic: 'Heal5.png',
+				framesDefault: {y: 40, x: 40},
+				frames: [
+					[{pattern: 13, zoom: 50}],
+					[{pattern: 13, zoom: 80}, {pattern: 1, zoom: 20}],
+					[{pattern: 13, zoom: 100}, {pattern: 2, zoom: 120}],
+					[{pattern: 13, zoom: 120, opacity: 200}, {pattern: 3, zoom: 120}],
+					[{pattern: 13, zoom: 125, opacity: 170}, {pattern: 4, zoom: 120}],
+					[{pattern: 13, zoom: 130, opacity: 150}, {pattern: 5, zoom: 120}],
+					[{pattern: 13, zoom: 125, opacity: 170}, {pattern: 6, zoom: 120}],
+					[{pattern: 13, zoom: 125, opacity: 200}, {pattern: 7, zoom: 120}],
+					[{pattern: 13, zoom: 125, opacity: 200}, {pattern: 7, zoom: 120}],
+					[{pattern: 13, zoom: 125, opacity: 170}, {pattern: 8, zoom: 120}],
+					[{pattern: 13, zoom: 130, opacity: 150}, {pattern: 9, zoom: 120}],
+					[{pattern: 13, zoom: 125, opacity: 170}, {pattern: 10, zoom: 120}],
+					[{pattern: 13, zoom: 110, opacity: 200}, {pattern: 11, zoom: 120}],
+					[{pattern: 13, zoom: 80, opacity: 180}, {pattern: 12, zoom: 120}],
+					[{pattern: 13, zoom: 60, opacity: 180}],
+					[{pattern: 13, zoom: 50, opacity: 150}],
+					[{pattern: 13, zoom: 50, opacity: 100}],
+					[{pattern: 13, zoom: 50, opacity: 50}]
+				]
+			});
+
+			// Adding animation from file "Database.js"
+			rpg.addAnimation(Database.animation['EM Exclamation']);
+			rpg.addAnimation(Database.animation['Darkness 1']);
+			rpg.addAnimation(Database.animation['Fang']);
+			rpg.addAnimation(Database.animation['SP Recovery 2']);
+
+			// Adding Actions
+
+
+			rpg.addAction('attack_ennemy', {
+				action: 'attack',
+				suffix_motion: [''],
+				duration_motion: 1,
+				block_movement: true,
+				wait_finish: 1
+			});
+
+			//Prepare to dynamically add events on the map
+			//rpg.prepareEventAjax("monster1");
+			//rpg.prepareEventAjax("monster2");
+			//rpg.prepareEventAjax("monster3");
+
+
+			rpg.addAction('myattack', {
+				action: 'attack', // for Action Battle System
+				suffix_motion: ['_SWD_1'], // suffix of the filename
+				duration_motion: 1, // animation loop
+				block_movement: true,
+				wait_finish: 5, // frame
+				speed: 25,
+				keypress: [Input.A],
+				condition: function() {
+					return rpg.switchesIsOn(2);
+				}
+			});
+
+			/* LOAD MAP */
+			rpg.loadMap('MAP001', {
+				tileset: '001-Grassland01.png',
+				autotiles: ['060-CE_Grass01.png'],
+				bgm:  {mp3: 'Fairy-Tale-Field'}, // WILL NOT WORK WITHOUT OGG
+				//bgm:  {mp3: 'Fairy-Tale-Field', ogg: 'fairy_field'},
+				/*
+				transfert: [
+					{x: 46, y: 8, map: 'Grotte1', x_final: 3, y_final: 39},
+					{x: 49, y: 34, map: 'Forest1', x_final: 0, y_final: 5, dy: 4, parallele: true, direction: 'right',
+					callback: function() {
+						// The player can not change maps if switch # 2 is not activated
+						if (rpg.player.inTransfert) return false;
+						rpg.player.inTransfert = true;
+						if (rpg.switchesIsOn(2)) {
+							return true;
+						}
+						else {
+							var event = rpg.getEventByName('EV001');
+							event.turnTowardPlayer();
+							rpg.callCommandsEvent(event, function() {
+								event.setStopDirection('left');
+								rpg.player.move(['left'], function() {
+									rpg.player.animation('stop');
+								});
+								rpg.player.inTransfert = false;
+							}, true);
+							return false;
+						}
+					}}
+				],
+				*/
+				//events:  ['EV001', 'EV002', 'EV003', 'EV004', 'EV005', 'EV006', 'EV007', 'EV008', 'EV009', 'EV010'],
+				player:  {
+					x: 10, // Starting X coordinate of grid
+					y: 6, // Starting Y coordinate of grid
+					direction: 'bottom',
+					filename: 'Hero.png',
+					regX: 35,
+					regY: 68,
+					actionBattle: {
+						hp_max: 200,
+						actions: ['myattack']
+					},
+					actions: ['myattack']
+				}
+
+			}, init);
+
+			function init() {
+				rpg.player.useMouse(true);
+				rpg.player.setTypeMove("real");
+
+				/*
+				rpg.bind('changeGold', function(gold) {
+					var total = parseInt($('#gold span').html());
+					$('#gold span').html(gold + total);
+				});
+				*/
+
+				// Set the scrolling on the player
+				rpg.setScreenIn("Player");
+			}
+
+			Input.lock(rpg.canvas, true);
+
+		}
+
+
+
+		function mapLoad() {
+			//rpg.player.setTypeMove("tile");
+
+			rpg.setActionBattle({
+				displayHpBar: true,
+				// When the player is detected
+				detection: {
+					_default: function(event) {
+						if (event.actionBattle.mode != 'passive') {
+							// View an animation of an event
+							rpg.animations['EM Exclamation'].setPositionEvent(event);
+							rpg.animations['EM Exclamation'].play();
+							// The event came to the player
+							event.approachPlayer();
+							// The mode of the event becomes "offensive"
+							rpg.setEventMode(event, 'offensive');
+
+						}
+					}
+				},
+				// When the player is no longer detected
+				nodetection: {
+					_default: function(event) {
+						// The event will stop movement and incorporates current random displacement
+						event.moveRandom();
+					}
+				},
+				onChangeMode: function(event, mode) {
+
+				},
+				eventInvinsible: {
+					normal: function(event) {
+
+					}
+				},
+				eventAttack: {
+					_default: function(event) {
+						// When the player is attacked
+						event.turnTowardPlayer();
+						rpg.animations['Fang'].setPositionEvent(rpg.player);
+						rpg.animations['Fang'].play();
+						rpg.player.blink(30, 2);
+						event.action('attack_ennemy', function() {
+							rpg.setEventMode(event, 'passive');
+						});
+						rpg.player.actionBattle.hp -= 5;
+						if (rpg.player.actionBattle.hp <= 0) {
+							alert('Game Over !');
+							window.location.reload(true);
+						}
+						else {
+							$('#hp').animate({'width': ($('#hp').width() - 5) + 'px'});
+						}
+					}
+
+				},
+				eventPassive: {
+					_default: function(event) {
+						event.moveRandom();
+						event.wait(25, false, function() {
+							event.detection = false;
+							rpg.setEventMode(event, 'normal');
+						});
+					}
+				},
+				eventAffected: {
+					_default: function(event) {
+						rpg.setEventMode(event, 'invinsible');
+						event.blink(30, 2, function() {
+							rpg.setEventMode(event, 'offensive');
+						});
+						event.actionBattle.hp -= 100;
+					}
+				},
+				ennemyDead: {
+					drop_coin: function(event, item) {
+						event.createEventRelativeThis(item, {
+							move: false
+						});
+
+					}
+				},
+				// Cache events can be deposited on the ground
+				eventsCache: ["coin"]
+			});
+
+
+
+		}
+
+		$(document).ready(function(){
+			$(window).resize(function(){
+				resize_canvas(true, true);
+			})
+		});
+
+	</script>
+
+
+
+ </head>
+  <body onload="load_wrapper()">
+		<div id="canvas_rpg-parent">
+			<canvas id="canvas_rpg" width="640" height="480" data-width="640" data-height="480"></canvas>
+			<div id="bar_hp">
+				<div id="hp"></div>
+			</div>
+			<div id="header">
+				<div id="sound" class="sound-play"></div>
+
+				<div id="gold"> : <span>0</span></div>
+				<div id="option"></div>
+			</div>
+
+			<div id="options" class="window">
+				<h1>Options</h1>
+				<fieldset><legend>Languages</legend>
+
+					<label><input type="radio" name="lang" value="en" checked> English</label><br />
+					<label><input type="radio" name="lang" value="fr"> Français</label>
+				</fieldset>
+				<h1>Help</h1>
+				<ul>
+					<li>Enter or Space : Speak, Action</li>
+
+					<li>Arrows : Move</li>
+					<li>A : Attack (if sword equipped)</li>
+				</ul>
+			</div>
+
+		</div>
+  </body>
+
+  <script>
+	//------ Optional
+	$(function() {
+		$('#sound').click(function() {
+			var val;
+			if ($(this).hasClass("sound-play")) {
+				$(this).removeClass('sound-play');
+				$(this).addClass('sound-mute');
+				val = 0;
+			}
+			else {
+				$(this).removeClass('sound-mute');
+				$(this).addClass('sound-play');
+				val = 1;
+			}
+			rpg.setVolumeAudio(val);
+			setCookie("rpg-volume", val);
+		});
+
+
+		$('#option').toggle(function() {
+				scene = new Scene(rpg);
+				scene.setFreeze("all");
+				$('#options').fadeIn("fast");
+			}, function() {
+				scene.exit();
+				$('#options').fadeOut("fast");
+				focus();
+			});
+
+		function focus() {
+			$('#canvas_rpg-dom').focus();
+		}
+
+		$('input[name="lang"]').click(function() {
+			rpg.setLang($(this).val());
+		});
+
+
+	});
+
+	function setCookie (name, value) {
+		var expire = new Date() ;
+		expire.setTime(new Date().getTime() + 60*60*24*14);
+		document.cookie = name + "=" + value + ";expires=" + expire.toGMTString();
+	}
+
+	function getCookie() {
+		var value = "", name = "";
+		var separator = document.cookie.indexOf( "=" );
+		var ret = {};
+		name = document.cookie.substring(0, separator);
+		value = document.cookie.substring(separator + 1, separator + 2);
+		ret[name] = value;
+		return ret;
+	}
+
+	 //---------
+
+  </script>
+
+</html>

@@ -50,6 +50,7 @@ img.img-responsive {
 a.logos {
     margin: 15px;
     outline: 0;
+    display: inline-block;
 }
 a.logos:hover img {
     opacity: 0.5;
@@ -69,8 +70,12 @@ section {
     padding-top: 50px;
     padding-bottom: 50px;
 }
+section#main {
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
 .well {
-    background: #00698C;
+    background-color: #00698C;
     border: none;
     border-top: 2px solid #000;
     border-bottom: 2px solid #000;
@@ -89,6 +94,9 @@ section h1 {
 section h2 {
     font-size: 35px;
     margin: 50px 0;
+}
+section h5 {
+    line-height: 22px;
 }
 section h5.sub {
     margin: -35px 50px;
@@ -146,6 +154,22 @@ ICONS
 */
 .panel svg g path {
   
+}
+
+/*
+
+MOBILE
+
+*/
+nav ul,
+nav ul li {
+    text-align: center;
+}
+/* Small Devices, Tablets */
+@media only screen and (max-width : 768px) {
+    body section#bottom .row .col-sm-6 {
+        text-align: center !important;
+    }
 }
 
 /*

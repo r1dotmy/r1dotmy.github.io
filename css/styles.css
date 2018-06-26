@@ -1,0 +1,178 @@
+/*
+
+RESETS
+
+*/
+body {
+    padding-top: 80px;
+}
+.navbar {
+    min-height: 80px;
+}
+.navbar-nav > li > a {
+    line-height: 50px;
+}
+.navbar-toggle {
+    padding: 20px 15px;
+}
+.btn-xxl {
+    line-height: 40px;
+}
+img.img-responsive {
+    width: 100%;
+    height: auto;
+}
+.just p {
+    text-align: justify;
+}
+.modal {
+    border-radius: 6px;
+}
+.modal-header {
+    border-radius: 6px 6px 0 0;
+}
+.modal-footer {
+    border-radius: 0 0 6px 6px;
+}
+.modal-header,
+.modal-footer {
+    background: #EEE;
+}
+.btn-primary {
+    background: #00698C;
+}
+.btn-primary:hover {
+    background: #333;
+}
+.modal .list-group {
+    margin-bottom: 0;
+}
+a.logos {
+    margin: 15px;
+    outline: 0;
+}
+a.logos:hover img {
+    opacity: 0.5;
+}
+iframe.gmap {
+    max-width: 100% !important;
+}
+
+/*
+
+SECTIONS
+
+*/
+section {
+    text-align: center;
+    font-size: 20px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.well {
+    background: #00698C;
+    border: none;
+    border-top: 2px solid #000;
+    border-bottom: 2px solid #000;
+    color: #FFF9AC;
+}
+.well small a {
+    color: #FFF;
+}
+.well small a:hover {
+    color: #CCC;
+}
+section h1 {
+    font-size: 55px;
+    margin: 50px 0;
+}
+section h2 {
+    font-size: 35px;
+    margin: 50px 0;
+}
+section h5.sub {
+    margin: -35px 50px;
+}
+section .row.actions {
+    padding-bottom: 25px;
+}
+section .row.actions .btn {
+    margin-top: -25px;
+    margin-bottom: 50px;
+}
+section .panels {
+    display: block;
+    position: relative;
+    margin: 100px 0 50px;
+}
+section.well .panels {
+    display: block;
+    position: relative;
+    margin: 0 0 50px;
+}
+.panels .panel .panel-body {
+    padding: 40px;
+}
+section.well .panel-heading,
+section.well .panel-footer,
+section.well .panel {
+    background: transparent;
+    border: none;
+}
+section svg g polygon,
+section svg g circle {
+    stroke: #00698C;
+}
+section svg,
+section svg g,
+section svg g path {
+    fill: #00698C;
+}
+section.well svg g polygon,
+section.well svg g circle {
+    stroke: #FFF9AC;
+}
+section.well svg,
+section.well svg g,
+section.well svg g polygon,
+section.well svg g path {
+    fill: #FFF9AC;
+}
+
+/*
+
+ICONS
+
+*/
+.panel svg g path {
+  
+}
+
+/*
+
+WORDS
+
+*/
+section.well .panel-heading {
+    color: #FFF;
+}
+section#bottom {
+    margin-bottom: 0;
+    border-bottom: none;
+    line-height: 40px;
+}
+section#bottom small {
+    font-size: 12px;
+}
+section#bottom .row .col-sm-6 {
+    text-align: right;
+}
+section#bottom .row .col-sm-6:first-child {
+    text-align: left;
+}
+.panel-heading h3 {
+    font-size: 35px;
+}
+.font {
+    font-family: 'Rajdhani', sans-serif;
+}

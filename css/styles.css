@@ -58,6 +58,13 @@ a.logos:hover img {
 iframe.gmap {
     max-width: 100% !important;
 }
+a.img-btn img {
+    margin-bottom: 15px;
+}
+a.img-btn:hover img {
+    background: #333;
+    opacity: 0.5;
+}
 
 /*
 

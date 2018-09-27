@@ -3,6 +3,11 @@
 RESETS
 
 */
+html, body {
+    overflow-x: hidden;
+    overflow-y: auto;
+    background: #EEE;
+}
 body {
     padding-top: 80px;
 }
@@ -65,6 +70,81 @@ a.img-btn:hover img {
     background: #333;
     opacity: 0.5;
 }
+a {
+    color: #00698C;
+}
+.active a,
+a:hover {
+    color: #333333;
+}
+img.img-block {
+    min-width: 100%;
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+}
+section p.intro {
+    color: #FFF;
+    margin-top: -30px;
+}
+section .row.actions {
+    margin-bottom: 35px;
+}
+    
+.btn.btn-secondary {
+    background: #333;
+    border: 1px solid #AAA;
+    color: #FFF;
+}
+.btn.btn-secondary:hover {
+    background: #00698C;
+}
+.btn {
+    border-radius: 6px;
+}
+
+/*
+
+HEADER
+
+*/
+.navbar-default {
+    border-bottom: 2px solid #BBB;
+}
+.navbar-default .navbar-nav > li,
+.navbar-default .navbar-nav > li > a {
+    position: relative;
+}
+.navbar-default .navbar-nav > li > a {
+    color: #00698C;
+}
+.navbar-default .navbar-nav > li.active > a {
+    color: #333;
+    background: transparent;
+}
+.navbar-default .navbar-nav > li.active > a:after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 20px;
+    left: 10px;
+    right: 10px;
+    border-bottom: 2px solid #333;
+}
+.navbar-default .navbar-nav > li > a.btn {
+    line-height: inherit;
+    padding: 5px;
+    margin: 26px 0 0 10px;
+    color: #FFF;
+}
+.navbar-default .navbar-nav > li > a.btn:hover {
+    background: #333;
+}
+.navbar-default .navbar-nav > li.active a,
+.navbar-default .navbar-nav > li.active a:hover,
+.navbar-default .navbar-nav > li a:hover {
+    background: transparent;
+}
 
 /*
 
@@ -76,6 +156,8 @@ section {
     font-size: 20px;
     padding-top: 50px;
     padding-bottom: 50px;
+    z-index: 0;
+    position: relative;
 }
 section#main {
     padding-top: 100px;
@@ -85,11 +167,54 @@ section#main {
     background-color: #00698C;
     border: none;
     border-top: 2px solid #000;
-    border-bottom: 2px solid #000;
+    border-bottom: 2px solid #BBB;
     color: #FFF9AC;
+}
+#main.well {
+    padding-left: 0;
+    padding-right: 0;
+    position: relative;
+    text-align: left;
+    padding-top: 40px
+}
+#main.well:after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 65px;
+    background: #FFF;
+    z-index: 0;
+}
+#main.well:before {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    background-image: url(../img/products.png);
+    background-repeat: no-repeat; 
+    background-position: right 60px; 
+    z-index: 1;
+}
+#main.well h1 {
+    font-size: 47px;
+}
+.well small {
+    display: block;
+    position: relative;
 }
 .well small a {
     color: #FFF;
+}
+section p.intro {
+    font-size: 19px;
+    line-height: 35px;
+    margin-bottom: 20px;
 }
 .well small a:hover {
     color: #CCC;
@@ -102,14 +227,14 @@ section h2 {
     font-size: 35px;
     margin: 50px 0;
 }
+section h3 {
+    font-size: 20px;
+}
 section h5 {
     line-height: 22px;
 }
 section h5.sub {
     margin: -35px 50px;
-}
-section .row.actions {
-    padding-bottom: 25px;
 }
 section .row.actions .btn {
     margin-top: -25px;
@@ -128,41 +253,90 @@ section.well .panels {
 .panels .panel .panel-body {
     padding: 40px;
 }
-section.well .panel-heading,
-section.well .panel-footer,
-section.well .panel {
-    background: transparent;
-    border: none;
+
+#marketplace.well {
+    text-align: right;
+    position: relative;
+    z-index: 1;
+    padding: 40px 0 20px;
 }
-section svg g polygon,
-section svg g circle {
-    stroke: #00698C;
+#marketplace.well:after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    background-image: url(../img/marketplace.png);
+    background-repeat: no-repeat; 
+    background-position: left 40px; 
+    z-index: 1;
 }
-section svg,
-section svg g,
-section svg g path {
-    fill: #00698C;
+#marketplace.well h2 {
+    font-size: 40px;
 }
-section.well svg g polygon,
-section.well svg g circle {
-    stroke: #FFF9AC;
+#mobile.well {
+    text-align: left;
+    padding: 200px 0;
 }
-section.well svg,
-section.well svg g,
-section.well svg g polygon,
-section.well svg g path {
-    fill: #FFF9AC;
+#mobile.well:after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    background-image: url(../img/mobile.png);
+    background-repeat: no-repeat; 
+    background-position: right 40px; 
+    z-index: 1;
+}
+#mobile.well h2 {
+    font-size: 40px;
 }
 
 /*
 
-ICONS
+FOOTER
 
 */
-.panel svg g path {
-  
+#footer .left {
+    text-align: left;
+}
+#footer .right {
+    text-align: right;
+}
+#footer .links {
+    font-size: 13px;
+    text-decoration: none;
+    color: #333;
+}
+#footer .links span {
+    color: #00698C;
+    font-weight: bold;
+}
+#footer a.links:hover {
+    color: #000;
+}
+#footer a.links:hover span {
+    color: #999;
 }
 
+
+/*
+
+PANELS
+
+*/
+.panel,
+.panel .panel-heading,
+.panel .panel-body {
+    background: transparent;
+    border-color: transparent;
+}
+    
 /*
 
 MOBILE
@@ -171,12 +345,6 @@ MOBILE
 nav ul,
 nav ul li {
     text-align: center;
-}
-/* Small Devices, Tablets */
-@media only screen and (max-width : 768px) {
-    body section#bottom .row .col-sm-6 {
-        text-align: center !important;
-    }
 }
 
 /*
@@ -206,4 +374,90 @@ section#bottom .row .col-sm-6:first-child {
 }
 .font {
     font-family: 'Rajdhani', sans-serif;
+}
+
+/* 
+
+RESPONSIVENESS
+
+*/
+
+@media only screen and (max-width : 1200px) {
+    #main.well {
+        padding: 10px 0 42px;
+    }
+    #marketplace.well:after {
+        background-position: -110px 70px;
+    }
+    #marketplace.well .row.actions {
+        margin-bottom: -10px;
+    }
+    #marketplace.well .row.actions .btn {
+        font-size: 12px;
+    }
+    #mobile.well:after {
+        background-position: calc(50% + 300px) 90px;
+    }
+    #mobile.well .row.actions {
+        margin-bottom: -120px;
+    }
+    #mobile.well h2 {
+        font-size: 35px;
+    }
+    #mobile.well .row.actions .btn {
+        font-size: 12px;
+    }
+}
+
+@media only screen and (max-width : 992px) {
+    .nav > li > a {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+    section .container .row {
+        text-align: center;
+    }
+    #main.well {
+        padding-bottom: 495px;
+    }
+    #main.well:before {
+        background-position: right 500px;
+    }
+    #footer .left,
+    #footer .right {
+        text-align: center;
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+    #marketplace.well {
+        padding-bottom: 475px;
+    }
+    #marketplace.well:after {
+        background-position: left bottom;
+    }
+    #mobile.well {
+        padding-top: 30px;
+        padding-bottom: 950px;
+    }
+    #mobile.well:after {
+        background-position: right bottom;
+    }
+}
+
+@media only screen and (max-width : 768px) {
+    #main.well {
+        padding-bottom: 475px;
+    }
+    #main.well:before {
+        background-position: right bottom;
+    }
+    #main.well::after {
+        bottom: -28px;
+    }
+    #marketplace.well:after {
+        background-position: calc(50% - 60px) bottom;
+    }
+    #mobile.well:after {
+        background-position: calc(50% + 60px) bottom;
+    }
 }

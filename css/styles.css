@@ -201,6 +201,15 @@ section#main.well-lms:before {
     background-position: right 60px; 
     z-index: 1;
 }
+section#main.well-lms.training:before {
+    background-image: url(../img/training.png);
+}
+section#main.well-lms.consulting:before {
+    background-image: url(../img/consulting.png);
+}
+section#main.well-lms.community:before {
+    background-image: url(../img/community.png);
+}
 section#main.well-lms h1 {
     font-size: 47px;
 }

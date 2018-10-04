@@ -389,6 +389,13 @@ section#bottom .row .col-sm-6:first-child {
 .font {
     font-family: 'Rajdhani', sans-serif;
 }
+.modal .modal-body a {
+    text-decoration: none;
+    border-bottom: 1px dotted #006699;
+}
+.modal .modal-body a:hover {
+    border-color: #333;
+}
 
 /* 
 

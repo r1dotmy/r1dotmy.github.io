@@ -102,6 +102,11 @@ section .row.actions {
 .btn {
     border-radius: 6px;
 }
+body .navbar-fixed-top .navbar-collapse, 
+body .navbar-fixed-bottom .navbar-collapse {
+    max-height: 100%;
+    padding-bottom: 10px;
+}
 
 /*
 
@@ -468,5 +473,16 @@ RESPONSIVENESS
     }
     #mobile.well:after {
         background-position: calc(50% + 60px) bottom;
+    }
+    .navbar-default .navbar-nav > li.active > a::after {
+        border-bottom: none;
+    }
+    .navbar-default .navbar-nav > li.active > a {
+        border-bottom: none;
+        background: #333;
+        color: #FFF;
+    }
+    .navbar-default .navbar-nav > li.active > a:hover {
+        background: #000;
     }
 }

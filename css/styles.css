@@ -485,4 +485,7 @@ RESPONSIVENESS
     .navbar-default .navbar-nav > li.active > a:hover {
         background: #000;
     }
+    .navbar-default .navbar-nav > li > a.btn {
+        margin: 26px 10px 0 10px;
+    }
 }
